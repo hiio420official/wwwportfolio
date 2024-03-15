@@ -15,6 +15,14 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWD }}
         port: ${{ secrets.PORT }}
-        script: sh /home/hiio420/C/project/portfolio/bin/start.sh
+        script: |
+          cd /home/hiio420/C/project/portfolio
+          git checkout main
+          git pull origin main
+          kill -9 $(lsof -i:3000 -t)
+        run: |
+          npm i
+          npm run build
+          nohup npm run start &
 
           
