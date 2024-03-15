@@ -22,5 +22,5 @@ jobs:
           npm i
           npm run build
           kill -9 $(lsof -i:3000 -t)
-          npm run start
+          nohup npm run start &
           
