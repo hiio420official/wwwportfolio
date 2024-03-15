@@ -19,10 +19,8 @@ jobs:
           cd /home/hiio420/C/project/portfolio
           git checkout main
           git pull origin main
-          kill -9 $(lsof -i:3000 -t)
-        run: |
           npm i
           npm run build
-          nohup npm run start &
+          pm2 restart nextjs
 
           
