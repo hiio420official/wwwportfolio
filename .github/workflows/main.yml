@@ -1,0 +1,26 @@
+name: wwwPortfolio-deploy
+on:
+  push:
+    branches: ['main']
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd /home/hiio420/C/project/portfolio
+          git checkout main
+          git pull origin main
+          npm i
+          npm run build
+          kill -9 $(lsof -i:3000 -t)
+          npm run start
+          
