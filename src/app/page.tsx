@@ -4,7 +4,7 @@ import {Metadata} from "next";
 import styles from "./test.module.scss"
 
 export const metadata: Metadata = {
-    title: "HIIO420",
+    title: "HIIO420 PORTFOLIO",
     description: "Hiio420Porfolio"
 }
 export default function Home() {
